@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AViMO: Avatar in Motion - Master Thesis</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- ================= SIDE NAVIGATION ================= -->
+  <nav class="side-nav">
+    <div class="nav-dot active" data-section="Home" onclick="scrollToSection('hero')"></div>
+    <div class="nav-dot" data-section="About" onclick="scrollToSection('motivation')"></div>
+    <div class="nav-dot" data-section="Method" onclick="scrollToSection('methodology')"></div>
+    <div class="nav-dot" data-section="Results" onclick="scrollToSection('results')"></div>
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>AViMO: Avatar in Motion</h1>
+      <h2>3D Human Reconstruction from Monocular Dance Videos with Expressive Motion</h2>
+      <div class="hero-divider"></div>
+      <div class="hero-author">
+        <p class="author-name">Arein Daralnakhla</p>
+        <p class="degree-info">Master's thesis</p>
+        <p class="program-name">Imaging and Lighting Extended Reality (IMLEX)</p>
+      </div>
+      
+      <!-- Logos Section -->
+      <div class="hero-logos">
+        <div class="logo-item">
+          <img src="figures/imlex.png" alt="IMLEX Program Logo" class="logo-img">
+        </div>
+        <div class="logo-item">
+          <img src="figures/lab.png" alt="Laboratory Logo" class="logo-img">
+        </div>
+        <div class="logo-item">
+          <img src="figures/premiere.png" alt="Project Logo" class="logo-img">
+        </div>
+        <div class="logo-item">
+          <img src="figures/uni.png" alt="University Logo" class="logo-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABSTRACT SECTION ================= -->
+  <section class="section white" id="motivation">
+    <div class="container">
+      <div class="section-title">
+        <h2>Abstract</h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="motivation-content">
+        <div class="motivation-card">
+          <p>
+            This project investigates the task of 3D human avatar reconstruction from monocular video, with a focus on dance performances featuring expressive and challenging body motion. Monocular video lacks depth and provides only a single viewpoint, making accurate 3D reconstruction difficult — particularly under fast movement, self-occlusion, and motion blur common in performance art.
+          </p>
+          <p>
+            We begin with a comprehensive survey and evaluation of state-of-the-art methods across pose estimation, 3D reconstruction, and visualization tools. This analysis highlights key limitations in current pipelines: inaccurate pose estimation, reliance on slow multi-stage optimization, and difficulty producing accurate, reusable avatars suitable for animation and real-time use.
+          </p>
+          <p>
+            To address these challenges, we develop a unified, three-stage pipeline that integrates best-performing techniques across these tasks, with targeted improvements including enhanced hand pose estimation, accurate scene decomposition, and an efficient export for lightweight, animation-ready avatars.
+          </p>
+          <p>
+            Our evaluation demonstrates that the proposed pipeline balances speed, accuracy, and surface quality, making it well-suited for downstream applications such as <span class="highlight">motion retargeting</span>, <span class="highlight purple">immersive media</span>, and the <span class="highlight purple">preservation of cultural performances</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OBJECTIVES SECTION ================= -->
+  <section class="section objectives-compact-section">
+    <div class="container">
+      <div class="section-title objectives-title">
+        <h2>Key Objectives</h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="objectives-grid-compact">
+        <div class="objective-card-mini">
+          <h4>Accurate Pose Estimation</h4>
+          <p>Precise tracking of complex dance movements and unusual poses</p>
+        </div>
+        <div class="objective-card-mini">
+          <h4>Processing Speed</h4>
+          <p>Fast, efficient pipeline for longer video sequences</p>
+        </div>
+        <div class="objective-card-mini">
+          <h4>Identity Preservation</h4>
+          <p>Maintain subject's unique characteristics during reconstruction</p>
+        </div>
+        <div class="objective-card-mini">
+          <h4>Smooth Animation</h4>
+          <p>Animatable reconstruction technique</p>
+        </div>
+        <div class="objective-card-mini">
+          <h4>Lightweight Export</h4>
+          <p>Optimized formats compatible with standard 3D tools</p>
+        </div>
+        <div class="objective-card-mini">
+          <h4>Interactive Visualization</h4>
+          <p>Real-time 3D visualization for immediate feedback</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE ROADMAP SECTION ================= -->
+  <section class="section roadmap-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Project Roadmap</h2>
+        <div class="title-divider"></div>
+      </div>
+      
+      <div class="roadmap-container">
+        <!-- Horizontal Timeline -->
+        <div class="timeline-wrapper">
+          <div class="timeline-line">
+            <div class="timeline-progress" id="timeline-progress"></div>
+          </div>
+          
+          <!-- Fixed Month Markers on the Line -->
+          <div class="timeline-months">
+            <div class="month-marker" data-month="march">
+              <span>Mar</span>
+            </div>
+            <div class="month-marker" data-month="april">
+              <span>Apr</span>
+            </div>
+            <div class="month-marker" data-month="may">
+              <span>May</span>
+            </div>
+            <div class="month-marker" data-month="june">
+              <span>Jun</span>
+            </div>
+            <div class="month-marker" data-month="july">
+              <span>Jul 14th</span>
+            </div>
+            <div class="month-marker" data-month="august">
+              <span>Aug 15th</span>
+            </div>
+          </div>
+          
+          <!-- Achievement Cards Above and Below Timeline -->
+          <div class="timeline-achievements">
+            <!-- March to Mid-April: Literature Review -->
+            <div class="achievement-card above" data-month="march" style="left: 12%;">
+              <div class="card-arrow"></div>
+              <h3>Literature Review & Method Testing</h3>
+              <p>Comprehensive analysis of state-of-the-art methods and initial testing</p>
+            </div>
+            
+            <!-- Mid-April to Mid-May: Comparative Study -->
+            <div class="achievement-card below" data-month="april" style="left: 28%;">
+              <div class="card-arrow"></div>
+              <h3>Comparative Study</h3>
+              <p>Evaluation and comparison of different reconstruction approaches</p>
+            </div>
+            
+            <!-- Mid-May to Mid-June: Pipeline Implementation -->
+            <div class="achievement-card above" data-month="may" style="left: 44%;">
+              <div class="card-arrow"></div>
+              <h3>Pipeline Implementation</h3>
+              <p>Development of integrated system with NLF, WiLoR, and Gaussian Splatting</p>
+            </div>
+            
+            <!-- Mid-June to July 14th: Thesis Writing -->
+            <div class="achievement-card below" data-month="june" style="left: 60%;">
+              <div class="card-arrow"></div>
+              <h3>Thesis Writing & Website Development</h3>
+              <p>Documentation of research findings and interactive presentation development</p>
+            </div>
+            
+            <!-- July 14th: First Draft -->
+            <div class="achievement-card above" data-month="july" style="left: 76%;">
+              <div class="card-arrow"></div>
+              <h3>First Draft Submission</h3>
+              <p>Complete thesis draft submitted for review and feedback</p>
+            </div>
+            
+            <!-- August 15th: Defense -->
+            <div class="achievement-card below" data-month="august" style="left: 92%;">
+              <div class="card-arrow"></div>
+              <h3>Thesis Defense</h3>
+              <p>Final presentation and defense of research findings</p>
+              <span class="status current">🎯 Current</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= METHODOLOGY SECTION ================= -->
+  <section class="section white" id="methodology">
+    <div class="container">
+      <div class="section-title">
+        <h2>Methodology</h2>
+        <div class="title-divider"></div>
+      </div>
+
+      <!-- Pipeline Steps Overview -->
+      <div class="pipeline-overview">
+        <div class="pipeline-icons">
+          <div class="pipeline-icon"><div class="mini-icon icon-blue">🎥</div><span>Video Input</span></div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-icon"><div class="mini-icon icon-purple">📏</div><span>Depth Maps</span></div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-icon"><div class="mini-icon icon-teal">✂️</div><span>Segmentation</span></div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-icon"><div class="mini-icon icon-indigo">🤸</div><span>Pose Estimation</span></div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-icon"><div class="mini-icon icon-pink">🎯</div><span>Gaussian Training</span></div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-icon"><div class="mini-icon icon-orange">🎬</div><span>Animation & Export</span></div>
+          <div class="pipeline-arrow">→</div>
+          <div class="pipeline-icon"><div class="mini-icon icon-cyan">🔁</div><span>3D Visualization</span></div>
+        </div>
+      </div>
+
+      <!-- Detailed Visual Steps -->
+      <div class="pipeline-container">
+        <div class="visual-content">
+          <div class="visual-grid">
+              <!-- Raw Video Input -->
+              <div class="visual-step" data-step="raw-video">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Video Preprocessing</h3>
+                    <p>Extract frames, metadata, and split into training/testing sets</p>
+                    <small>1920×1080 resolution</small>
+                  </div>
+                  <div class="step-media">
+                    <video class="step-thumbnail lazy-video hover-play expandable-video" muted loop preload="none" data-src="figures/video.mp4" data-caption="Raw Video - Input video footage">
+                      <source data-src="figures/video.mp4" type="video/mp4">
+                      <source data-src="figures/video.webm" type="video/webm">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Frame Extraction -->
+              <div class="visual-step" data-step="frame-extraction">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Frame Extraction</h3>
+                    <p>Preprocessing and metadata extraction for training/testing split</p>
+                    <small>719 frames extracted</small>
+                  </div>
+                  <div class="step-media frames-stack">
+                    <div class="frame-layer frame-1">
+                      <img src="figures/frame_0.png" alt="Frame 1" class="frame-image">
+                    </div>
+                    <div class="frame-layer frame-2">
+                      <img src="figures/frame_0.png" alt="Frame 2" class="frame-image">
+                    </div>
+                    <div class="frame-layer frame-3">
+                      <img src="figures/frame_0.png" alt="Frame 3" class="frame-image">
+                    </div>
+                    <div class="frame-counter">719 frames</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Depth Maps -->
+              <div class="visual-step" data-step="depth-maps">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Depth Analysis</h3>
+                    <p>MoGe model for depth maps and camera intrinsics estimation</p>
+                    <small>3D Point Clouds Generation</small>
+                  </div>
+                  <div class="step-media">
+                    <img data-src="figures/depthmap.png" alt="Depth map thumbnail" class="step-thumbnail lazy-load">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Segmentation -->
+              <div class="visual-step" data-step="segmentation">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Segmentation</h3>
+                    <p>SAM v2.1 for foreground-background separation masks</p>
+                    <small>Human/Background Masks</small>
+                  </div>
+                  <div class="step-media">
+                    <img data-src="figures/mask.png" alt="Segmentation thumbnail" class="step-thumbnail lazy-load">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pose Estimation -->
+              <div class="visual-step" data-step="pose-estimation">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Pose & Shape Estimation</h3>
+                    <p>NLF for SMPL-X pose with WiLoR hand refinement</p>
+                    <small>SMPL-X + MANO Models</small>
+                  </div>
+                  <div class="step-media">
+                    <img data-src="figures/skeleton.png" alt="Pose estimation skeleton" class="step-thumbnail lazy-load">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene Decomposition -->
+              <div class="visual-step" data-step="scene-decomposition">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Scene Decomposition</h3>
+                    <p>Separate human pose from background scene geometry</p>
+                    <small>Human/Scene Separation</small>
+                  </div>
+                  <div class="step-media">
+                    <img id="scene-media" data-src="figures/bkg.png" alt="Background Scene" class="step-thumbnail lazy-load">
+                    <img id="pose-media" data-src="figures/pose_shape_est.png" alt="Pose Shape Estimation" class="step-thumbnail lazy-load hidden">
+                  </div>
+                  <button class="scene-switch-btn" onclick="switchSceneMedia()">
+                    <span class="scene-switch-arrow">→</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Gaussian Training -->
+              <div class="visual-step" data-step="gaussian-training">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Gaussian Training</h3>
+                    <p>Train human and scene 3D Gaussians simultaneously</p>
+                    <small>Neutral Pose Training</small>
+                  </div>
+                  <div class="step-media">
+                    <video class="step-thumbnail lazy-video hover-play expandable-video" muted loop preload="none" data-src="figures/gaussian-training.webm#t=4" data-caption="Gaussian Training - Train human and scene 3D Gaussians simultaneously">
+                      <source data-src="figures/gaussian-training.webm#t=4" type="video/webm">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Final Output -->
+              <div class="visual-step" data-step="final-output">
+                <div class="step-content">
+                  <div class="step-overlay">
+                    <h3>Animation & Export</h3>
+                    <p>Linear blend skinning and Spark WebGL visualization</p>
+                    <small>Interactive 3D Avatar</small>
+                  </div>
+                  <div class="step-media">
+                    <video class="step-thumbnail lazy-video hover-play expandable-video" muted loop preload="none" data-src="figures/anim-vis.webm" data-caption="Animation & Export - Interactive 3D Avatar">
+                      <source data-src="figures/anim-vis.webm" type="video/webm">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toggleable Flowchart Image -->
+            <div class="flowchart-toggle">
+              <button id="flowchart-btn" class="toggle-btn" style="margin-top: 2rem;">View Detailed Flowchart</button>
+              <div id="flowchart-popup" class="flowchart-popup hidden">
+                <span class="close-popup" id="close-popup">✖</span>
+                <img src="figures/text-flow.png" alt="Detailed Technical Flowchart" class="flowchart-img" />
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="methodology-description">
+        <p>
+          Our pipeline processes monocular dance videos through six main stages: video preprocessing with frame extraction, 
+          monocular depth estimation using MoGe, foreground-background segmentation with SAM v2.1, pose and shape estimation 
+          combining NLF and WiLoR for enhanced hand tracking, simultaneous training of human and scene 3D Gaussians, 
+          and finally animation export with interactive WebGL visualization using Spark renderer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESULTS SECTION ================= -->
+  <section class="section gray" id="results">
+    <div class="container">
+      <div class="section-title">
+        <h2>Results</h2>
+        <div class="title-divider"></div>
+      </div>
+
+      <div class="results-pipeline">
+        <!-- Row 1 -->
+        <!-- Target Subject Column -->
+        <div class="pipeline-stage">
+          <h4 class="stage-title">Target Subject</h4>
+          <div class="video-stack single-result">
+            <div class="video-item">
+              <video class="pipeline-video lazy-video hover-play" muted loop preload="none" data-src="figures/target-subject.mp4" onclick="openVideoModal('figures/target-subject.mp4', 'Original Subject')">
+                <source data-src="figures/target-subject.mp4" type="video/mp4">
+                <source data-src="figures/target-subject.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+              <p class="video-caption">Original Subject</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Target Motion Column -->
+        <div class="pipeline-stage">
+          <h4 class="stage-title">Target Motion Sequence</h4>
+          <div class="video-stack single-result">
+            <div class="video-item">
+              <video class="pipeline-video lazy-video hover-play" muted loop preload="none" data-src="figures/motion1.mp4" onclick="openVideoModal('figures/motion1.mp4', 'Target Motion')">
+                <source data-src="figures/motion1.mp4" type="video/mp4">
+                <source data-src="figures/motion1.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Motion Retargeting Column -->
+        <div class="pipeline-stage">
+          <h4 class="stage-title">Motion Retargeting</h4>
+          <div class="video-stack single-result">
+            <div class="video-item">
+              <video class="pipeline-video lazy-video hover-play" muted loop preload="none" data-src="figures/retargeted-motion1.webm" onclick="openVideoModal('figures/retargeted-motion1.webm', 'Retargeted Avatar')">
+                <source data-src="figures/retargeted-motion1.webm" type="video/webm">
+                <source data-src="figures/retargeted-motion1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <!-- Empty space for alignment -->
+        <div class="pipeline-stage pipeline-empty"></div>
+
+        <!-- Target Motion 2 Column -->
+        <div class="pipeline-stage">
+          <div class="video-stack single-result">
+            <div class="video-item">
+              <video class="pipeline-video lazy-video hover-play" muted loop preload="none" data-src="figures/motion2.mp4" onclick="openVideoModal('figures/motion2.mp4', 'Target Motion 2')">
+                <source data-src="figures/motion2.mp4" type="video/mp4">
+                <source data-src="figures/motion2.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Motion Retargeting 2 Column -->
+        <div class="pipeline-stage">
+          <div class="video-stack single-result">
+            <div class="video-item">
+              <video class="pipeline-video lazy-video hover-play" muted loop preload="none" data-src="figures/retargeted-motion2.webm" onclick="openVideoModal('figures/retargeted-motion2.webm', 'Retargeted Avatar 2')">
+                <source data-src="figures/retargeted-motion2.webm" type="video/webm">
+                <source data-src="figures/retargeted-motion2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- ================= EXPANDABLE GIF MODAL ================= -->
+  <div id="gif-modal" class="gif-modal-overlay">
+    <div class="gif-modal-content">
+      <button class="gif-modal-close" id="gif-modal-close">✖</button>
+      <img id="gif-modal-image" class="gif-modal-image" src="" alt="">
+      <p id="gif-modal-caption" class="gif-modal-caption"></p>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="video-modal-overlay">
+    <div class="video-modal-content">
+      <button class="video-modal-close" id="video-modal-close">✖</button>
+      <video id="video-modal-player" class="video-modal-video" controls muted loop>
+        Your browser does not support the video tag.
+      </video>
+      <p id="video-modal-caption" class="video-modal-caption"></p>
+    </div>
+  </div>
+</body>
+</html>
