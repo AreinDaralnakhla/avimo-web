@@ -94,7 +94,7 @@
         </div>
         <div class="objective-card-mini">
           <h4>Smooth Animation</h4>
-          <p>Animatable reconstruction technique</p>
+          <p>Animatability of the final avatar output with new motion</p>
         </div>
         <div class="objective-card-mini">
           <h4>Lightweight Export</h4>
@@ -102,7 +102,7 @@
         </div>
         <div class="objective-card-mini">
           <h4>Interactive Visualization</h4>
-          <p>Real-time 3D visualization for immediate feedback</p>
+          <p>Real-time 3D visualization for interactivity and immediate feedback</p>
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@
             <!-- March to Mid-April: Literature Review -->
             <div class="achievement-card above" data-month="march" style="left: 12%;">
               <div class="card-arrow"></div>
-              <h3>Literature Review & Method Testing</h3>
+              <h3>Literature Review & Testing</h3>
               <p>Comprehensive analysis of state-of-the-art methods and initial testing</p>
             </div>
             
@@ -158,14 +158,14 @@
             <div class="achievement-card below" data-month="april" style="left: 28%;">
               <div class="card-arrow"></div>
               <h3>Comparative Study</h3>
-              <p>Evaluation and comparison of different reconstruction approaches</p>
+              <p>Evaluation and comparison of methods and approaches</p>
             </div>
             
             <!-- Mid-May to Mid-June: Pipeline Implementation -->
             <div class="achievement-card above" data-month="may" style="left: 44%;">
               <div class="card-arrow"></div>
               <h3>Pipeline Implementation</h3>
-              <p>Development of integrated system with NLF, WiLoR, and Gaussian Splatting</p>
+              <p>Development of the proposed pipeline, main contributions, and evaluation</p>
             </div>
             
             <!-- Mid-June to July 14th: Thesis Writing -->
@@ -206,15 +206,13 @@
       <!-- Pipeline Steps Overview -->
       <div class="pipeline-overview">
         <div class="pipeline-icons">
-          <div class="pipeline-icon"><div class="mini-icon icon-blue">🎥</div><span>Video Input</span></div>
+          <div class="pipeline-icon"><div class="mini-icon icon-blue">🎥</div><span>Video Preprocessing</span></div>
           <div class="pipeline-arrow">→</div>
-          <div class="pipeline-icon"><div class="mini-icon icon-purple">📏</div><span>Depth Maps</span></div>
-          <div class="pipeline-arrow">→</div>
-          <div class="pipeline-icon"><div class="mini-icon icon-teal">✂️</div><span>Segmentation</span></div>
+          <div class="pipeline-icon"><div class="mini-icon icon-teal">✂️</div><span>Scene Decomposition</span></div>
           <div class="pipeline-arrow">→</div>
           <div class="pipeline-icon"><div class="mini-icon icon-indigo">🤸</div><span>Pose Estimation</span></div>
           <div class="pipeline-arrow">→</div>
-          <div class="pipeline-icon"><div class="mini-icon icon-pink">🎯</div><span>Gaussian Training</span></div>
+          <div class="pipeline-icon"><div class="mini-icon icon-pink">🎯</div><span>Gaussian Learning</span></div>
           <div class="pipeline-arrow">→</div>
           <div class="pipeline-icon"><div class="mini-icon icon-orange">🎬</div><span>Animation & Export</span></div>
           <div class="pipeline-arrow">→</div>
@@ -230,8 +228,8 @@
               <div class="visual-step" data-step="raw-video">
                 <div class="step-content">
                   <div class="step-overlay">
-                    <h3>Video Preprocessing</h3>
-                    <p>Extract frames, metadata, and split into training/testing sets</p>
+                    <h3>Video Input</h3>
+                    <p>Video of the target subject to be recontructed</p>
                     <small>1920×1080 resolution</small>
                   </div>
                   <div class="step-media">
@@ -248,8 +246,8 @@
               <div class="visual-step" data-step="frame-extraction">
                 <div class="step-content">
                   <div class="step-overlay">
-                    <h3>Frame Extraction</h3>
-                    <p>Preprocessing and metadata extraction for training/testing split</p>
+                    <h3>Preprocessing</h3>
+                    <p>Extract frames, metadata, and split into training/testing sets</p>
                     <small>719 frames extracted</small>
                   </div>
                   <div class="step-media frames-stack">
@@ -273,7 +271,7 @@
                   <div class="step-overlay">
                     <h3>Depth Analysis</h3>
                     <p>MoGe model for depth maps and camera intrinsics estimation</p>
-                    <small>3D Point Clouds Generation</small>
+                    <small>USED FOR SCENE DECOMPOSITION</small>
                   </div>
                   <div class="step-media">
                     <img data-src="figures/depthmap.png" alt="Depth map thumbnail" class="step-thumbnail lazy-load">
@@ -287,7 +285,7 @@
                   <div class="step-overlay">
                     <h3>Segmentation</h3>
                     <p>SAM v2.1 for foreground-background separation masks</p>
-                    <small>Human/Background Masks</small>
+                    <small>USED FOR SCENE DECOMPOSITION</small>
                   </div>
                   <div class="step-media">
                     <img data-src="figures/mask.png" alt="Segmentation thumbnail" class="step-thumbnail lazy-load">
@@ -331,7 +329,7 @@
               <div class="visual-step" data-step="gaussian-training">
                 <div class="step-content">
                   <div class="step-overlay">
-                    <h3>Gaussian Training</h3>
+                    <h3>Gaussian Learning</h3>
                     <p>Train human and scene 3D Gaussians simultaneously</p>
                     <small>Neutral Pose Training</small>
                   </div>
@@ -367,7 +365,7 @@
               <button id="flowchart-btn" class="toggle-btn" style="margin-top: 2rem;">View Detailed Flowchart</button>
               <div id="flowchart-popup" class="flowchart-popup hidden">
                 <span class="close-popup" id="close-popup">✖</span>
-                <img src="figures/text-flow.png" alt="Detailed Technical Flowchart" class="flowchart-img" />
+                <img src="figures/pipeline.png" alt="Detailed Technical Flowchart" class="flowchart-img" />
               </div>
             </div>
 
